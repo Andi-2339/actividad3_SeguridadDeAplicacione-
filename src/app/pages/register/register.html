@@ -1,22 +1,25 @@
-<div class="flex justify-content-center align-items-center h-screen">
-  <div class="card p-4 w-25">
-    <h2 class="text-center">Register</h2>
+<div class="container">
 
-    <div class="field">
-      <label>Nombre</label>
-      <input pInputText class="w-full"/>
-    </div>
+  <h2>Registro</h2>
 
-    <div class="field mt-3">
-      <label>Email</label>
-      <input pInputText type="email" class="w-full"/>
-    </div>
+  <form [formGroup]="registerForm" (ngSubmit)="register()">
 
-    <div class="field mt-3">
-      <label>Password</label>
-      <input pPassword class="w-full"/>
-    </div>
+    <input pInputText formControlName="usuario" placeholder="Usuario" />
+    <input pInputText formControlName="email" placeholder="Email" />
+    <input pInputText formControlName="nombreCompleto" placeholder="Nombre completo" />
+    <input pInputText formControlName="direccion" placeholder="Dirección" />
+    <input pInputText formControlName="telefono" placeholder="Teléfono" />
+    <input pInputText formControlName="edad" placeholder="Edad" />
 
-    <p-button label="Registrarse" severity="success" class="w-full mt-4"></p-button>
-  </div>
+    <input pPassword formControlName="password" placeholder="Contraseña" />
+    <input pPassword formControlName="confirmPassword" placeholder="Confirmar contraseña" />
+
+    <p-button 
+      label="Registrarse"
+      type="submit"
+      [disabled]="registerForm.invalid">
+    </p-button>
+
+  </form>
+
 </div>

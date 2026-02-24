@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { ButtonModule } from 'primeng/button';
@@ -8,7 +8,7 @@ import { ButtonModule } from 'primeng/button';
   selector: 'app-login',
   standalone: true,
   imports: [
-    FormsModule,
+    ReactiveFormsModule,
     InputTextModule,
     PasswordModule,
     ButtonModule
@@ -17,10 +17,24 @@ import { ButtonModule } from 'primeng/button';
   styleUrls: ['./login.css']
 })
 export class LoginComponent {
-  email = '';
-  password = '';
+
+  loginForm!: FormGroup;  // <- solo declaramos
+
+  constructor(private fb: FormBuilder) {
+    // <- lo inicializamos aquí
+    this.loginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required]
+    });
+  }
 
   login() {
-    console.log(this.email, this.password);
+    const { email, password } = this.loginForm.value;
+
+    if (email === 'admin@demo.com' && password === 'Admin123!@#') {
+      alert('Login correcto ✅');
+    } else {
+      alert('Credenciales incorrectas ❌');
+    }
   }
 }
