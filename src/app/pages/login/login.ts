@@ -3,6 +3,7 @@ import { ReactiveFormsModule, FormBuilder, Validators, FormGroup } from '@angula
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { ButtonModule } from 'primeng/button';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,7 @@ export class LoginComponent {
 
   loginForm!: FormGroup;  // <- solo declaramos
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private router: Router) {
     // <- lo inicializamos aquí
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -28,13 +29,15 @@ export class LoginComponent {
     });
   }
 
-  login() {
-    const { email, password } = this.loginForm.value;
+login() {
+  if (this.loginForm.invalid) return;
 
-    if (email === 'admin@demo.com' && password === 'Admin123!@#') {
-      alert('Login correcto ✅');
-    } else {
-      alert('Credenciales incorrectas ❌');
-    }
+  const { email, password } = this.loginForm.value;
+
+  if (email === 'andrea@gmail.com' && password === 'Admin123!@#') {
+    this.router.navigate(['/dashboard/group']);
+  } else {
+    alert('Credenciales incorrectas');
   }
+}
 }

@@ -26,7 +26,7 @@ export class RegisterComponent {
       email: ['', [Validators.required, Validators.email]],
       nombreCompleto: ['', Validators.required],
       direccion: ['', Validators.required],
-      telefono: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
+      telefono: ['', [Validators.required, Validators.pattern(/^[0-9]{10}$/)]],
       edad: ['', [Validators.required, Validators.min(18)]],
       password: ['', [
         Validators.required,

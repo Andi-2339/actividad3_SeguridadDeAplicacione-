@@ -1,0 +1,75 @@
+.layout {
+  display: flex;
+  height: 100vh;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 230px;
+  background: #1f2937;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  transition: width 0.3s ease;
+}
+
+.sidebar.closed {
+  transform: translateX(-100%);
+}
+
+/* CONTENEDOR DERECHO */
+.main-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* NAVBAR SUPERIOR */
+.navbar {
+  height: 60px;
+  background: #111827;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  gap: 15px;
+}
+
+/* CONTENIDO */
+.content {
+  flex: 1;
+  padding: 30px;
+  overflow: auto;
+}
+
+/* BOTONES SIDEBAR */
+.menu-btn {
+  background-color: #10b981;
+  color: white;
+  border: none;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: left;
+  font-size: 16px;
+}
+
+.logout-btn {
+  background-color: white;
+  color: #1f2937;
+  border: none;
+  padding: 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: auto;
+}
+
+.toggle-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 22px;
+  cursor: pointer;
+}
